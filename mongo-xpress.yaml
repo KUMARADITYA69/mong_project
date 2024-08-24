@@ -1,3 +1,4 @@
+#yaml manifest for mongo-express deployment 
 apiVersion: apps/v2
 kind: Deployment
 metadata:
@@ -36,6 +37,7 @@ spec:
               name: mongodb-configmap
               key: database_url
 ---
+##yaml manifest for load balancer service to route north-south traffic into the cluster towards mongodb
 #apiVersion: v1
 #kind: Service
 #  metadata:
@@ -50,6 +52,7 @@ spec:
 #      targetPort: 8081
 #      nodePort: 31000
 ---
+#yaml manifest for cluster ip service to route north-south traffic into the cluster towards mongo-express using ingress host based routing.
 apiVersion: v1
 kind: Service
 metadata:
